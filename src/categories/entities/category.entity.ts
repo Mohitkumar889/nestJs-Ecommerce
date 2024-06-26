@@ -1,5 +1,6 @@
+import { Product } from "src/products/entities/product.entity";
 import { Subcategory } from "src/subcategories/entities/subcategory.entity";
-import { Column, CreateDateColumn, Entity, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
+import { Column, CreateDateColumn, Entity, ManyToMany, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
 
 @Entity()
 export class Category {
@@ -23,5 +24,8 @@ export class Category {
 
     @OneToMany(() => Subcategory, subcategory => subcategory.category, { cascade: true })
     subcategories: Subcategory[];
+
+    @ManyToMany(() => Product, product => product.categories)
+    products: Product[];
 
 }

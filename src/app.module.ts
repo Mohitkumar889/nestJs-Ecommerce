@@ -6,6 +6,8 @@ import { JwtStrategy } from './common/validations/jwt.strategy';
 import { CategoriesModule } from './categories/categories.module';
 import { SubcategoriesModule } from './subcategories/subcategories.module';
 import { IsIdExistsConstraint } from './common/validations/common-validations';
+import { ProductsModule } from './products/products.module';
+import { CartModule } from './cart/cart.module';
 
 @Module({
   imports: [
@@ -30,7 +32,9 @@ import { IsIdExistsConstraint } from './common/validations/common-validations';
     }),
     UsersModule,
     CategoriesModule,
-    SubcategoriesModule
+    SubcategoriesModule,
+    ProductsModule,
+    CartModule
   ],
   controllers: [],
   providers: [IsIdExistsConstraint],

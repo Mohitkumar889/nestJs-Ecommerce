@@ -49,8 +49,7 @@ export class CategoriesController {
 
   @Delete(':id')
   async remove(@Param('id') id: string) {
-    let category = await this.categoriesService.remove(+id);
-    console.log(category, "dssdhhj");
+    await this.categoriesService.remove(+id);
     return createResponse(201, 'category deleted successfully', {});
   }
 

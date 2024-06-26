@@ -59,7 +59,21 @@ export class SubcategoriesController {
 
   @Delete(':id')
   async remove(@Param('id') id: string) {
-    let subCategory = await this.subcategoriesService.remove(+id);
+    await this.subcategoriesService.remove(+id);
     return createResponse(201, 'subCategory deleted successfully', {});
+  }
+
+  @Patch('/toggle/:id')
+  async toggle(@Param('id') id: string) {
+    let subCategoryNew = await this.subcategoriesService.findOne(+id);
+    let subCategory = subCategoryNew.data;
+    if (!subCategory) {
+      return createResponse(404, 'subCategory does not exist for given id.', {});
+    }
+
+    let status: boolean = subCategory.status == true ? false : true;
+    subCategory = await this.subcategoriesService.toggle(+id, status);
+    subCategory = subCategory.data;
+    return createResponse(201, 'subcategories status updated successfully', {});
   }
 }
