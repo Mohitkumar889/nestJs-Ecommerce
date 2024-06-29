@@ -65,4 +65,5 @@ export class CategoriesController {
     category = category.data;
     return createResponse(201, 'category status updated successfully', {});
   }
+  
 }
